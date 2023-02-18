@@ -1,4 +1,4 @@
 export default [ //list
-  {'password':'aaaaaa'},
-  'bbb',
+  {password:'aaaaaa'},
+  {password:'aaaaaa'}
 ]

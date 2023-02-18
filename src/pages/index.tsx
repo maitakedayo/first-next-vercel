@@ -44,8 +44,8 @@ const HomePage: NextPage<SSGProps> = (props) => {
   //アドレスを変えるとレンダーされるようにする
   const address = '/api/hello?id=0'
 
-  const func = (...args)=> fetch(...args).then(res => res.text()).then(text => JSON.parse(text)['password'])
-  const { data, error } = useSWR(address, func)
+  const func = (...args:Parameters<typeof fetch>) => fetch(...args).then(res => res.text()).then(text => JSON.parse(text)['password'])
+  const { data, error } = useSWR<string, Error>(address, func)
 
   //ノーマル関数
   const changeFlag = (e: ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +54,7 @@ const HomePage: NextPage<SSGProps> = (props) => {
 
   //ノーマル関数
   const doLogoutAction = ()=>{
-    setFormpass(() => null)
+    setFormpass(() => "nillnillnill")
   }
 
 
