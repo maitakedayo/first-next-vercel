@@ -1,6 +1,6 @@
 //終着地 Imageタグで画像表示
 
-import Image, { ImageProps } from 'next/image'
+import Image from 'next/image'
 import { StaticImageData } from 'next/image'
 import { memo } from 'react'
 //import BibleImage from '../public/images/bible.jpeg'

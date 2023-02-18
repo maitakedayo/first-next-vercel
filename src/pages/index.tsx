@@ -40,11 +40,11 @@ const products = [
 const HomePage: NextPage<SSGProps> = (props) => {  
   const { message } = props //分割代入で引数呼び出し
   const [loginflag, setLoginflag] = useState<boolean>(false);
-  const [formpass, setFormpass] = useState<any>("")
+  const [formpass, setFormpass] = useState<string>("")
   //アドレスを変えるとレンダーされるようにする
   const address = '/api/hello?id=0'
 
-  const func = (...args)=> fetch(...args).then(res => res.text()).then(text => JSON.parse(text)['password'])//res.text()
+  const func = (...args)=> fetch(...args).then(res => res.text()).then(text => JSON.parse(text)['password'])
   const { data, error } = useSWR(address, func)
 
   //ノーマル関数

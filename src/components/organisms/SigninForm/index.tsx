@@ -10,7 +10,7 @@ interface SigninFormProps {
   /**
    * サインインボタンを押した時のイベントハンドラ
    */
-  setFormpass: any
+  setFormpass: React.Dispatch<React.SetStateAction<string>>
 }
 
 /**
