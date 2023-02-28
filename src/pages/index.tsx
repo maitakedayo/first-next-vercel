@@ -41,6 +41,9 @@ const HomePage: NextPage<SSGProps> = (props) => {
   const { message } = props //分割代入で引数呼び出し
   const [loginflag, setLoginflag] = useState<boolean>(false);
   const [formpass, setFormpass] = useState<string>("")
+  //const [selectedBook, setSelectedBook] = useState({})
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+
   //アドレスを変えるとレンダーされるようにする
   const address = '/api/hello?id=0'
 
@@ -72,6 +75,15 @@ const HomePage: NextPage<SSGProps> = (props) => {
     return <div>Loading...</div>
   }
 
+  //ノーマル関数
+  const handleShowDetails = () => { 
+    setIsOpen((arg) => !arg)
+  }
+
+  //ノーマル関数
+  const doOpen = () =>{ 
+    setIsOpen((arg) => !arg)
+  }
   
   return (
     <div>
@@ -136,6 +148,7 @@ const HomePage: NextPage<SSGProps> = (props) => {
                   <PureProductCard
                     title={p.title}
                     price={p.price}
+                    handleShowDetails={handleShowDetails}
                     imageUrl={p.imageUrl}
                     isblur={loginflag}
                   />
@@ -152,6 +165,7 @@ const HomePage: NextPage<SSGProps> = (props) => {
                   <PureProductCard
                     title={p.title}
                     price={p.price}
+                    handleShowDetails={handleShowDetails}
                     imageUrl={p.imageUrl}
                     isblur={loginflag}
                   />
@@ -159,6 +173,37 @@ const HomePage: NextPage<SSGProps> = (props) => {
               ))}
             </div>
           </section>
+          {isOpen ? (
+              <div className="flex items-center justify-center fixed top-0 left-0 w-full h-full bg-gray-800 ">{/**id="overlay" */}
+                <div className="z-10 w-6/12 p-2 rounded-lg bg-gray-200">{/**id="book-details" */}
+                  <button onClick={() => doOpen()}>
+                    Close ✖️
+                  </button>
+                  <div className="bg-gray-100 rounded-xl m-2 p-2">  
+                    <p className="text-xl text-grey-800 mb-2">Before Pass</p>
+                    <p>ID: </p>
+                    <p>AccountName: </p>
+                  </div>
+                  <div className="bg-gray-100 rounded-xl m-2 p-2">         
+                    <p className="text-xl text-grey-800 mb-2">Edit Mode</p>
+                    <div className="flex justify-around" /** 行並び　ボタンのみ右端に配置する*/>
+                      <div className="flex form-group p-2" /** 行並び*/>
+                        <label>New AccountName:</label>
+                      </div>
+                    </div>
+                    <div className="flex justify-around" /** 行並び　ボタンのみ右端に配置する*/>
+                      <div className="flex form-group p-2" /** 行並び*/>
+                        <label>New Pass:</label>
+                      </div>
+                    </div>
+                    <button className="bg-green-400 hover:bg-green-300 text-white rounded-lg px-4 py-2 ml-2"
+                      >ENTER</button> 
+                  </div>
+                </div>
+              </div>
+            ) : null
+          }
+
 
         </main>
       </Layout>

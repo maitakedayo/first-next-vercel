@@ -9,6 +9,7 @@ interface ProductCardProps {
   title: string
   price: string//number
   isblur: boolean
+  handleShowDetails: React.Dispatch<React.SetStateAction<boolean>>
   /**
   blurDataUrl?: string
   variant?: 'listing' | 'small' | 'detail'
@@ -24,6 +25,7 @@ const ProductCard = ({
   title,
   price,
   isblur,
+  handleShowDetails,
   /**
   blurDataUrl,
   variant = 'listing',
@@ -54,6 +56,12 @@ const ProductCard = ({
           <label className='text-lg tracking-wide '>{price}</label>
         </div>
       </div>
+      <>
+        <button className="w-full bg-gradient-to-br from-blue-300 to-blue-800 hover:bg-gradient-to-tl text-white rounded px-4 py-2"
+          onClick={() => handleShowDetails("")}>
+          View Details 👀
+        </button>
+      </>
     </div>
   )
 }
