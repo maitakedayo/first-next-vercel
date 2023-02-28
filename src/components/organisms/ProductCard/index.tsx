@@ -58,7 +58,7 @@ const ProductCard = ({
       </div>
       <>
         <button className="w-full bg-gradient-to-br from-blue-300 to-blue-800 hover:bg-gradient-to-tl text-white rounded px-4 py-2"
-          onClick={() => handleShowDetails("")}>
+          onClick={() => handleShowDetails((arg) => !arg)}>
           View Details 👀
         </button>
       </>
